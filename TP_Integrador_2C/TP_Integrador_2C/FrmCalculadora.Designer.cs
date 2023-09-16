@@ -63,6 +63,7 @@
             rdbBinario.TabStop = true;
             rdbBinario.Text = "Binario";
             rdbBinario.UseVisualStyleBackColor = true;
+            rdbBinario.CheckedChanged += rdbBinario_CheckedChanged;
             // 
             // rdbDecimal
             // 
@@ -74,6 +75,7 @@
             rdbDecimal.TabStop = true;
             rdbDecimal.Text = "Decimal";
             rdbDecimal.UseVisualStyleBackColor = true;
+            rdbDecimal.CheckedChanged += rdbDecimal_CheckedChanged;
             // 
             // gpbSistema
             // 
@@ -123,6 +125,7 @@
             txtPrimerOperador.Name = "txtPrimerOperador";
             txtPrimerOperador.Size = new Size(154, 23);
             txtPrimerOperador.TabIndex = 7;
+            txtPrimerOperador.TextChanged += txtPrimerOperador_TextChanged;
             // 
             // txtSegundoOperador
             // 
@@ -130,6 +133,7 @@
             txtSegundoOperador.Name = "txtSegundoOperador";
             txtSegundoOperador.Size = new Size(173, 23);
             txtSegundoOperador.TabIndex = 8;
+            txtSegundoOperador.TextChanged += txtSegundoOperador_TextChanged;
             // 
             // cmbOperacion
             // 
@@ -148,6 +152,7 @@
             btnOperar.TabIndex = 10;
             btnOperar.Text = "Operar";
             btnOperar.UseVisualStyleBackColor = true;
+            btnOperar.Click += btnOperar_Click;
             // 
             // btnLimpiar
             // 
@@ -157,6 +162,7 @@
             btnLimpiar.TabIndex = 11;
             btnLimpiar.Text = "Limpiar";
             btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // btnCerrar
             // 
@@ -166,6 +172,7 @@
             btnCerrar.TabIndex = 12;
             btnCerrar.Text = "Cerrar";
             btnCerrar.UseVisualStyleBackColor = true;
+            btnCerrar.Click += btnCerrar_Click;
             // 
             // FrmCalculadora
             // 
@@ -189,6 +196,7 @@
             Name = "FrmCalculadora";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Calculadora Gonzalez Juan Pablo";
+            Load += FrmCalculadora_Load;
             gpbSistema.ResumeLayout(false);
             gpbSistema.PerformLayout();
             ResumeLayout(false);
