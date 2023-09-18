@@ -14,7 +14,9 @@ namespace TP_Integrador_2C
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-
+            this.txtPrimerOperador.Clear();
+            this.txtSegundoOperador.Clear();
+            //this.lblResultado.
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

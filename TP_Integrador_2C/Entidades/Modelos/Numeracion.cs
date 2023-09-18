@@ -29,7 +29,7 @@ namespace Entidades.Modelos
         public Numeracion(double valor, ESistema sistema)
         {
             this.valorNumerico = valor;
-            this.InicializarValores(valor.ToString(), sistema);
+            this.sistema = sistema;
         }
 
         /// <summary>
@@ -39,7 +39,10 @@ namespace Entidades.Modelos
         /// <param name="sistema">Recibe un enumerado</param>
         public Numeracion(string valor, ESistema sistema)
         {
-            
+            if (this.EsBinario(valor))
+            {
+                this.InicializarValores(valor, sistema);
+            }
         }
 
         /// <summary>
@@ -49,7 +52,19 @@ namespace Entidades.Modelos
         /// <param name="sistema">recibe un enumerado</param>
         private void InicializarValores(string valor, ESistema sistema)
         {
-            this.sistema = sistema;
+
+            if (EsBinario(valor))
+            {
+                this.valorNumerico = BinarioADecimal(valor);
+            }
+            else if (int.TryParse(valor, out int nuevoValor))
+            {
+                this.valorNumerico = nuevoValor;
+            }
+            else
+            {
+                this.valorNumerico = double.MinValue;
+            }
         }
 
         /// <summary>
@@ -78,7 +93,7 @@ namespace Entidades.Modelos
                 }
                 else
                 {
-                    sb.AppendLine("Es decimal");
+                    sb.AppendLine("Es Decimal");
                 }
 
                 return sb.ToString();
@@ -89,11 +104,15 @@ namespace Entidades.Modelos
         {
             if (sistema is ESistema.Binario)
             {
-                
+                return "";
             }
             else if (sistema is ESistema.Decimal)
             {
-
+                return "";
+            }
+            else
+            {
+                return "Numero invalido";
             }
         }
 
@@ -122,14 +141,26 @@ namespace Entidades.Modelos
         /// <returns>retorna una cadena de caracteres</returns>
         private string DecimalABinario(int valor)
         {
-            if (valor > 0)
+            string valorBinario = string.Empty;
+            double resultadoDiv = valor;
+            double restoDiv;
+
+            if (valor >= 0)
             {
-                return "";
+                do
+                {
+                    restoDiv = resultadoDiv % 2;
+                    resultadoDiv /= 2;
+                    valorBinario = restoDiv.ToString() + valorBinario;
+
+                } while (resultadoDiv > 0);
             }
             else
             {
                 return "Numero invalido";
             }
+
+            return valorBinario;
         }
 
         /// <summary>
@@ -139,14 +170,25 @@ namespace Entidades.Modelos
         /// <returns>Retorna una cadena de caracteres </returns>
         private string DecimalABinario(string valor)
         {
+            double.TryParse(valor, out double resultadoDiv);
+            double restoDiv;
+
             if (string.IsNullOrEmpty(valor))
             {
-                return "";
+                do
+                {
+                    restoDiv = resultadoDiv % 2;
+                    resultadoDiv /= 2;
+                    valor = resultadoDiv.ToString() + valor;
+
+                } while (resultadoDiv > 0);
             }
             else
             {
                 return "Numero invalido";
             }
+
+            return valor;
         }
 
         /// <summary>
@@ -157,15 +199,17 @@ namespace Entidades.Modelos
         private double BinarioADecimal(string valor)
         {
             double resultado = 0;
-            
-            double longitud = valor.Length;
+            double cantDeCarcter = valor.Length;
 
             if (this.EsBinario(valor))
             {
-                for (double i = 0; i < longitud; i++) 
+                foreach (char caracter in valor)
                 {
-                    double sumaBinario = double.Parse(valor.ToString());
-                    resultado += sumaBinario * (int)Math.Pow(2, longitud - i - 1);
+                    cantDeCarcter--;
+                    if (caracter == '1')
+                    {
+                        resultado += (double)Math.Pow(2, cantDeCarcter);
+                    }
                 }
             }
             else
