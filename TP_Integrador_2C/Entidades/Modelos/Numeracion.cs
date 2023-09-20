@@ -26,7 +26,8 @@ namespace Entidades.Modelos
         /// </summary>
         /// <param name="valor">Recibe como parametro un double</param>
         /// <param name="sistema">Recibe como parametro un enumero</param>
-        public Numeracion(double valor, ESistema sistema)
+        public Numeracion(double valor, ESistema sistema) 
+            : this(valor.ToString(), sistema)
         {
             this.valorNumerico = valor;
             this.sistema = sistema;
@@ -37,12 +38,9 @@ namespace Entidades.Modelos
         /// </summary>
         /// <param name="valor">Recibe una string</param>
         /// <param name="sistema">Recibe un enumerado</param>
-        public Numeracion(string valor, ESistema sistema)
+        public Numeracion(string valor, ESistema sistema) 
         {
-            if (this.EsBinario(valor))
-            {
-                this.InicializarValores(valor, sistema);
-            }
+            this.InicializarValores(valor, sistema);
         }
 
         /// <summary>
@@ -52,14 +50,13 @@ namespace Entidades.Modelos
         /// <param name="sistema">recibe un enumerado</param>
         private void InicializarValores(string valor, ESistema sistema)
         {
-
-            if (EsBinario(valor))
+            if (sistema == ESistema.Decimal)
             {
-                this.valorNumerico = BinarioADecimal(valor);
+                double.TryParse(valor, out double valorNumerico);
             }
-            else if (int.TryParse(valor, out int nuevoValor))
+            else if (sistema == ESistema.Binario)
             {
-                this.valorNumerico = nuevoValor;
+                this.valorNumerico = this.BinarioADecimal(valor);
             }
             else
             {
@@ -85,18 +82,7 @@ namespace Entidades.Modelos
         {
             get
             {
-                StringBuilder sb = new StringBuilder();
-
-                if (this.sistema == ESistema.Binario)
-                {
-                    sb.AppendLine("Es Binario");
-                }
-                else
-                {
-                    sb.AppendLine("Es Decimal");
-                }
-
-                return sb.ToString();
+                return this.valorNumerico.ToString();
             }
         }
 
@@ -104,11 +90,11 @@ namespace Entidades.Modelos
         {
             if (sistema is ESistema.Binario)
             {
-                return "";
+                return "Es Binario";
             }
             else if (sistema is ESistema.Decimal)
             {
-                return "";
+                return "Es Decimal";
             }
             else
             {

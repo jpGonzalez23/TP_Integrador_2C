@@ -1,10 +1,23 @@
+using Entidades;
+using Entidades.Modelos;
+
 namespace TP_Integrador_2C
 {
     public partial class FrmCalculadora : Form
     {
+        private Operacion calcular;
+        private Numeracion primerOperador;
+        private Numeracion segundoOperador;
+        private Numeracion.ESistema sistema;
+
         public FrmCalculadora()
         {
             InitializeComponent();
+        }
+
+        private void FrmCalculadora_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void btnOperar_Click(object sender, EventArgs e)
@@ -16,42 +29,24 @@ namespace TP_Integrador_2C
         {
             this.txtPrimerOperador.Clear();
             this.txtSegundoOperador.Clear();
-            //this.lblResultado.
+            this.lblResultado.Text = "";
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void FrmCalculadora_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rdbBinario_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rdbDecimal_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPrimerOperador_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtSegundoOperador_TextChanged(object sender, EventArgs e)
-        {
-
+            this.Close();
         }
 
         private void SetResultado()
         {
-
+            if (this.rdbBinario.Checked)
+            {
+                this.lblResultado.Text = "";
+            }
+            else if (this.rdbDecimal.Checked)
+            {
+                this.lblResultado.Text = "";
+            }
         }
     }
 }
