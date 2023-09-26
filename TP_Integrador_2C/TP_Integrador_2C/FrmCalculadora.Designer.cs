@@ -60,9 +60,9 @@
             rdbBinario.Name = "rdbBinario";
             rdbBinario.Size = new Size(62, 19);
             rdbBinario.TabIndex = 1;
-            rdbBinario.TabStop = true;
             rdbBinario.Text = "Binario";
             rdbBinario.UseVisualStyleBackColor = true;
+            rdbBinario.CheckedChanged += rdbBinario_CheckedChanged;
             // 
             // rdbDecimal
             // 
@@ -71,9 +71,9 @@
             rdbDecimal.Name = "rdbDecimal";
             rdbDecimal.Size = new Size(68, 19);
             rdbDecimal.TabIndex = 2;
-            rdbDecimal.TabStop = true;
             rdbDecimal.Text = "Decimal";
             rdbDecimal.UseVisualStyleBackColor = true;
+            rdbDecimal.CheckedChanged += rdbDecimal_CheckedChanged;
             // 
             // gpbSistema
             // 
@@ -114,7 +114,7 @@
             lblSegundoOperador.Location = new Point(340, 139);
             lblSegundoOperador.Name = "lblSegundoOperador";
             lblSegundoOperador.Size = new Size(173, 25);
-            lblSegundoOperador.TabIndex = 6;
+            lblSegundoOperador.TabIndex = 7;
             lblSegundoOperador.Text = "Segundo Operador";
             // 
             // txtPrimerOperador
@@ -122,7 +122,8 @@
             txtPrimerOperador.Location = new Point(12, 167);
             txtPrimerOperador.Name = "txtPrimerOperador";
             txtPrimerOperador.Size = new Size(154, 23);
-            txtPrimerOperador.TabIndex = 7;
+            txtPrimerOperador.TabIndex = 5;
+            txtPrimerOperador.TextChanged += txtPrimerOperador_TextChanged;
             // 
             // txtSegundoOperador
             // 
@@ -130,15 +131,17 @@
             txtSegundoOperador.Name = "txtSegundoOperador";
             txtSegundoOperador.Size = new Size(173, 23);
             txtSegundoOperador.TabIndex = 8;
+            txtSegundoOperador.TextChanged += txtSegundoOperador_TextChanged;
             // 
             // cmbOperacion
             // 
+            cmbOperacion.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbOperacion.FormattingEnabled = true;
             cmbOperacion.Items.AddRange(new object[] { "+", "-", "*", "/" });
             cmbOperacion.Location = new Point(194, 167);
             cmbOperacion.Name = "cmbOperacion";
             cmbOperacion.Size = new Size(121, 23);
-            cmbOperacion.TabIndex = 9;
+            cmbOperacion.TabIndex = 6;
             // 
             // btnOperar
             // 

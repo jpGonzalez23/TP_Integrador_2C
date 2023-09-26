@@ -52,7 +52,7 @@ namespace Entidades.Modelos
         {
             if (sistema == ESistema.Decimal)
             {
-                double.TryParse(valor, out double valorNumerico);
+                double.TryParse(valor, out this.valorNumerico);
             }
             else if (sistema == ESistema.Binario)
             {

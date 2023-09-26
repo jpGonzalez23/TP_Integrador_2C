@@ -30,3 +30,7 @@ C:\Users\User\Downloads\TP_Integrador_2C-main\TP_Integrador_2C\TP_Integrador_2C\
 C:\Users\User\Downloads\TP_Integrador_2C-main\TP_Integrador_2C\TP_Integrador_2C\obj\Debug\net6.0-windows\TP_Integrador_2C.pdb
 C:\Users\User\Downloads\TP_Integrador_2C-main\TP_Integrador_2C\TP_Integrador_2C\obj\Debug\net6.0-windows\TP_Integrador_2C.genruntimeconfig.cache
 C:\Users\User\Downloads\TP_Integrador_2C-main\TP_Integrador_2C\TP_Integrador_2C\obj\Debug\net6.0-windows\ref\TP_Integrador_2C.dll
+C:\Users\juan pablo gonzalez\Documents\Facultad\Segundo Cuatrimestre\TP_Integrador_2C\TP_Integrador_2C\TP_Integrador_2C\bin\Debug\net6.0-windows\Entidades.dll
+C:\Users\juan pablo gonzalez\Documents\Facultad\Segundo Cuatrimestre\TP_Integrador_2C\TP_Integrador_2C\TP_Integrador_2C\bin\Debug\net6.0-windows\Entidades.pdb
+C:\Users\juan pablo gonzalez\Documents\Facultad\Segundo Cuatrimestre\TP_Integrador_2C\TP_Integrador_2C\TP_Integrador_2C\obj\Debug\net6.0-windows\TP_Integrador_2C.csproj.AssemblyReference.cache
+C:\Users\juan pablo gonzalez\Documents\Facultad\Segundo Cuatrimestre\TP_Integrador_2C\TP_Integrador_2C\TP_Integrador_2C\obj\Debug\net6.0-windows\TP_Integrador_2C.csproj.CopyComplete
