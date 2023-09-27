@@ -29,8 +29,7 @@ namespace Entidades.Modelos
         public Numeracion(double valor, ESistema sistema) 
             : this(valor.ToString(), sistema)
         {
-            this.valorNumerico = valor;
-            this.sistema = sistema;
+            
         }
 
         /// <summary>
@@ -62,6 +61,8 @@ namespace Entidades.Modelos
             {
                 this.valorNumerico = double.MinValue;
             }
+
+            this.sistema = sistema;
         }
 
         /// <summary>
@@ -258,7 +259,11 @@ namespace Entidades.Modelos
         /// <returns></returns>
         public static Numeracion operator +(Numeracion n1, Numeracion n2)
         {
-            return n1 + n2;
+            double suma = double.Parse(n1.Valor) + double.Parse(n2.Valor);
+            
+            Numeracion resultado = new Numeracion(suma, ESistema.Decimal);
+
+            return resultado;
         }
 
         /// <summary>
@@ -269,7 +274,11 @@ namespace Entidades.Modelos
         /// <returns></returns>
         public static Numeracion operator -(Numeracion n1, Numeracion n2)
         {
-            return n1 - n2;
+            double resta = double.Parse(n1.Valor) - double.Parse(n2.Valor);
+            
+            Numeracion resultado = new Numeracion(resta, ESistema.Decimal);
+
+            return resultado;
         }
 
         /// <summary>
@@ -280,7 +289,11 @@ namespace Entidades.Modelos
         /// <returns></returns>
         public static Numeracion operator *(Numeracion n1, Numeracion n2)
         {
-            return n1 * n2;
+            double multiplicacion = double.Parse(n1.Valor) * double.Parse(n2.Valor);
+
+            Numeracion resultado = new Numeracion(multiplicacion, ESistema.Decimal);
+
+            return resultado;
         }
 
         /// <summary>
@@ -291,7 +304,11 @@ namespace Entidades.Modelos
         /// <returns></returns>
         public static Numeracion operator /(Numeracion n1, Numeracion n2)
         {
-            return n1 / n2;
+            double division = double.Parse(n1.Valor) / double.Parse(n2.Valor);
+
+            Numeracion resultado = new Numeracion(division, ESistema.Decimal);
+
+            return resultado;
         }
     }
 }

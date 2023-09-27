@@ -18,16 +18,18 @@ namespace TP_Integrador_2C
 
         private void FrmCalculadora_Load(object sender, EventArgs e)
         {
-
+            this.cmbOperacion.Text = "+";
+            this.lblResultado.Text = "Resultado: ";
+            this.rdbDecimal.Checked = true;
         }
 
         private void btnOperar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(this.txtPrimerOperador.Text))
             {
-                MessageBox.Show("Falta completar el primer campo", 
-                             "Error!", 
-                                     MessageBoxButtons.OK, 
+                MessageBox.Show("Falta completar el primer campo",
+                             "Error!",
+                                     MessageBoxButtons.OK,
                                      MessageBoxIcon.Error);
             }
             else if (string.IsNullOrWhiteSpace(this.txtSegundoOperador.Text))
@@ -39,7 +41,14 @@ namespace TP_Integrador_2C
             }
             else
             {
+                this.primerOperador = new Numeracion(this.txtPrimerOperador.Text, this.sistema);
+                this.segundoOperador = new Numeracion(this.txtSegundoOperador.Text, this.sistema);
+                
+                this.calcular = new Operacion(this.primerOperador, this.segundoOperador);
 
+                char signo = Convert.ToChar(cmbOperacion.SelectedItem.ToString());
+
+                this.resultado = calcular.Operar(signo);
             }
         }
 
@@ -47,8 +56,8 @@ namespace TP_Integrador_2C
         {
             this.txtPrimerOperador.Clear();
             this.txtSegundoOperador.Clear();
-            this.lblResultado.Text = null;
-            this.cmbOperacion.Text = null;
+            this.lblResultado.Text = "Resultado: ";
+            this.cmbOperacion.Text = "+";
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -66,14 +75,7 @@ namespace TP_Integrador_2C
 
         private void SetResultado()
         {
-            if (this.rdbBinario.Checked)
-            {
-                this.lblResultado.Text = "";
-            }
-            else if (this.rdbDecimal.Checked)
-            {
-                this.lblResultado.Text = "";
-            }
+            this.lblResultado.Text = resultado.ToString();
         }
 
         private void txtPrimerOperador_TextChanged(object sender, EventArgs e)

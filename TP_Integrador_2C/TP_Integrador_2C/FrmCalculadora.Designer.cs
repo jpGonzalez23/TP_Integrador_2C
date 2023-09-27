@@ -51,7 +51,6 @@
             lblResultado.Name = "lblResultado";
             lblResultado.Size = new Size(380, 40);
             lblResultado.TabIndex = 0;
-            lblResultado.Text = "Resultado:";
             // 
             // rdbBinario
             // 
