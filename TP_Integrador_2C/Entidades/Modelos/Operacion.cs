@@ -44,8 +44,6 @@
         {
             switch (operacion)
             {
-                case '+':
-                    return this.PrimerOperador + this.SegundoOperador;
                 case '-':
                     return this.PrimerOperador - this.SegundoOperador;
                 case '*':

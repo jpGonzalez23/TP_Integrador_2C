@@ -41,14 +41,11 @@ namespace TP_Integrador_2C
             }
             else
             {
-                this.primerOperador = new Numeracion(this.txtPrimerOperador.Text, this.sistema);
-                this.segundoOperador = new Numeracion(this.txtSegundoOperador.Text, this.sistema);
-                
                 this.calcular = new Operacion(this.primerOperador, this.segundoOperador);
+                //char signo = char.Parse(cmbOperacion.SelectedItem.ToString());
+                this.resultado = calcular.Operar(cmbOperacion.Text[0]);
 
-                char signo = Convert.ToChar(cmbOperacion.SelectedItem.ToString());
-
-                this.resultado = calcular.Operar(signo);
+                SetResultado();
             }
         }
 
@@ -57,7 +54,7 @@ namespace TP_Integrador_2C
             this.txtPrimerOperador.Clear();
             this.txtSegundoOperador.Clear();
             this.lblResultado.Text = "Resultado: ";
-            this.cmbOperacion.Text = "+";
+            this.cmbOperacion.Text = null;
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -75,38 +72,28 @@ namespace TP_Integrador_2C
 
         private void SetResultado()
         {
-            this.lblResultado.Text = resultado.ToString();
+            if (resultado is not null)
+            {
+                this.lblResultado.Text = "Resultado: " + resultado.ConvertirA(sistema);
+            }
         }
 
         private void txtPrimerOperador_TextChanged(object sender, EventArgs e)
         {
-            if (rdbBinario.Checked)
-            {
-                primerOperador = new Numeracion(txtPrimerOperador.Text, Numeracion.ESistema.Binario);
-            }
-            else
-            {
-                primerOperador = new Numeracion(txtPrimerOperador.Text, Numeracion.ESistema.Decimal);
-            }
+            this.primerOperador = new Numeracion(txtPrimerOperador.Text, Numeracion.ESistema.Decimal);
         }
 
         private void txtSegundoOperador_TextChanged(object sender, EventArgs e)
         {
-            if (rdbBinario.Checked)
-            {
-                segundoOperador = new Numeracion(txtSegundoOperador.Text, Numeracion.ESistema.Binario);
-            }
-            else
-            {
-                segundoOperador = new Numeracion(txtSegundoOperador.Text, Numeracion.ESistema.Decimal);
-            }
+            this.segundoOperador = new Numeracion(txtSegundoOperador.Text, Numeracion.ESistema.Decimal);
         }
 
         private void rdbBinario_CheckedChanged(object sender, EventArgs e)
         {
             if (rdbBinario.Checked)
             {
-                rdbDecimal.Checked = false;
+                this.sistema = Numeracion.ESistema.Binario;
+                SetResultado();
             }
         }
 
@@ -114,7 +101,8 @@ namespace TP_Integrador_2C
         {
             if (rdbDecimal.Checked)
             {
-                rdbBinario.Checked = false;
+                this.sistema = Numeracion.ESistema.Decimal;
+                SetResultado();
             }
         }
     }
