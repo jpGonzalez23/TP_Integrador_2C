@@ -50,9 +50,7 @@ namespace Entidades.Modelos
         /// <param name="sistema">Recibe como parametro un enumero</param>
         public Numeracion(double valor, ESistema sistema) 
             : this(valor.ToString(), sistema)
-        {
-            
-        }
+        { }
 
         /// <summary>
         /// Sobrecarga del constructor de instacia de la Numeracion
@@ -95,16 +93,13 @@ namespace Entidades.Modelos
             }
             else if (sistema == ESistema.Binario)
             {
-                return this.BinarioADecimal(Valor).ToString();
+                return DecimalABinario(Valor);
             }
-            else if (sistema == ESistema.Decimal)
+            else 
             {
-                return this.DecimalABinario(Valor);
+                return BinarioADecimal(Valor).ToString();
             }
-            else
-            {
-                return "Numero invalido";
-            }
+            
         }
 
         /// <summary>
@@ -169,7 +164,7 @@ namespace Entidades.Modelos
             double resultado = 0;
             int longitud = valor.Length;
 
-            for (int i = 0; i < longitud; i++)
+            for (int i = 0; i < longitud - 1; i++)
             {
                 if (valor[i] == '1')
                 {
@@ -182,21 +177,21 @@ namespace Entidades.Modelos
         }
 
         /// <summary>
-        /// Metodo para 
+        /// Metodo para comprar si 2 numeros son iguales, si tienen el mismo sistema
         /// </summary>
-        /// <param name="numeroUno"></param>
-        /// <param name="numeroDos"></param>
+        /// <param name="numeroUno">Ingreso de un numero tipo numeracion</param>
+        /// <param name="numeroDos">Ingreso de un numero tipo numeracion</param>
         /// <returns></returns>
         public static bool operator ==(Numeracion numeroUno, Numeracion numeroDos)
         {
-            return numeroUno.valorNumerico == numeroDos.valorNumerico && numeroUno.Sistema == numeroDos.Sistema;
+            return numeroUno.Sistema == numeroDos.Sistema;
         }
 
         /// <summary>
-        /// 
+        /// Sobrecarga del metodo de comparacion
         /// </summary>
-        /// <param name="numeroUno"></param>
-        /// <param name="numeroDos"></param>
+        /// <param name="numeroUno">Ingreso de un numero tipo numeracion</param>
+        /// <param name="numeroDos">Ingreso de un numero tipo numeracion</param>
         /// <returns></returns>
         public static bool operator !=(Numeracion numeroUno, Numeracion numeroDos)
         {
@@ -204,10 +199,10 @@ namespace Entidades.Modelos
         }
 
         /// <summary>
-        /// 
+        /// Metodo para compara si el sistema es el mismo que del tipo numeracion
         /// </summary>
-        /// <param name="sistema"></param>
-        /// <param name="numeracion"></param>
+        /// <param name="sistema">Ingreso del sistema</param>
+        /// <param name="numeracion">Ingreso de un numero tipo numeracion</param>
         /// <returns></returns>
         public static bool operator ==(ESistema sistema, Numeracion numeracion)
         {
@@ -215,10 +210,10 @@ namespace Entidades.Modelos
         }
 
         /// <summary>
-        /// 
+        /// Sobrecarga del metodo comparacion
         /// </summary>
-        /// <param name="sistema"></param>
-        /// <param name="numeracion"></param>
+        /// <param name="sistema">Ingreso de un numero tipo numeracion</param>
+        /// <param name="numeracion">Ingreso de un numero tipo numeracion</param>
         /// <returns></returns>
         public static bool operator !=(ESistema sistema, Numeracion numeracion)
         {
@@ -226,10 +221,10 @@ namespace Entidades.Modelos
         }
 
         /// <summary>
-        /// 
+        /// Metodo para sumar dos numeros del tipo numeracion
         /// </summary>
-        /// <param name="n1"></param>
-        /// <param name="n2"></param>
+        /// <param name="n1">Ingreso de un numero tipo numeracion</param>
+        /// <param name="n2">Ingreso de un numero tipo numeracion</param>
         /// <returns></returns>
         public static Numeracion operator +(Numeracion n1, Numeracion n2)
         {
@@ -238,41 +233,38 @@ namespace Entidades.Modelos
         }
 
         /// <summary>
-        /// 
+        /// Metodo para restar dos numeros del tipo numeracion
         /// </summary>
-        /// <param name="n1"></param>
-        /// <param name="n2"></param>
+        /// <param name="n1">Ingreso de un numero tipo numeracion</param>
+        /// <param name="n2">Ingreso de un numero tipo numeracionparam>
         /// <returns></returns>
         public static Numeracion operator -(Numeracion n1, Numeracion n2)
         {
             double resta = n1.valorNumerico - n2.valorNumerico;
-            
             return new Numeracion(resta, ESistema.Decimal);
         }
 
         /// <summary>
-        /// 
+        /// Metodo para multiplicar dos numeros del tipo numeracion
         /// </summary>
-        /// <param name="n1"></param>
-        /// <param name="n2"></param>
+        /// <param name="n1">Ingreso de un numero tipo numeracion</param>
+        /// <param name="n2">Ingreso de un numero tipo numeracion</param>
         /// <returns></returns>
         public static Numeracion operator *(Numeracion n1, Numeracion n2)
         {
             double multiplicacion = n1.valorNumerico * n2.valorNumerico;
-
             return new Numeracion(multiplicacion, ESistema.Decimal);
         }
 
         /// <summary>
-        /// 
+        /// Metodo para divir dos numeros del tipo numeracion
         /// </summary>
-        /// <param name="n1"></param>
-        /// <param name="n2"></param>
+        /// <param name="n1">Ingreso de un numero tipo numeracion</param>
+        /// <param name="n2">Ingreso de un numero tipo numeracion</param>
         /// <returns></returns>
         public static Numeracion operator /(Numeracion n1, Numeracion n2)
         {
             double division = n1.valorNumerico / n2.valorNumerico;
-
             return new Numeracion(division, ESistema.Decimal);
         }
     }
