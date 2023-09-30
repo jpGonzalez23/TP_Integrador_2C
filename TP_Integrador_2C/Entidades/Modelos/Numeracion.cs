@@ -85,6 +85,11 @@ namespace Entidades.Modelos
             this.sistema = sistema;
         }
 
+        /// <summary>
+        /// Metodo para convertir al sistema seleccionado
+        /// </summary>
+        /// <param name="sistema"></param>
+        /// <returns></returns>
         public string ConvertirA(ESistema sistema)
         {
             if (sistema == this.sistema)
