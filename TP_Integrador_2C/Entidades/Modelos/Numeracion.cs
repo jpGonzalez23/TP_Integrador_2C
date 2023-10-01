@@ -99,10 +99,12 @@ namespace Entidades.Modelos
             else if (sistema == ESistema.Binario)
             {
                 return DecimalABinario(Valor);
+                //return BinarioADecimal(Valor).ToString();
             }
             else 
             {
                 return BinarioADecimal(Valor).ToString();
+                //return DecimalABinario(Valor);
             }
             
         }
@@ -152,7 +154,7 @@ namespace Entidades.Modelos
         /// <returns>Retorna una cadena de caracteres </returns>
         private string DecimalABinario(string valor)
         {
-            if (!int.TryParse(valor, out int decimalNumero))
+            if (int.TryParse(valor, out int decimalNumero))
             {
                 return "Numero invalido";
             }
