@@ -5,17 +5,26 @@ namespace TP_Integrador_2C
 {
     public partial class FrmCalculadora : Form
     {
+        // Declaracion de variable
         private Operacion calcular;
         private Numeracion primerOperador;
         private Numeracion segundoOperador;
         private Numeracion resultado;
         private Numeracion.ESistema sistema;
 
+        /// <summary>
+        /// Constructor del formulario
+        /// </summary>
         public FrmCalculadora()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Metodo para inicializar valores
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmCalculadora_Load(object sender, EventArgs e)
         {
             this.cmbOperacion.Text = "+";
@@ -23,6 +32,12 @@ namespace TP_Integrador_2C
             this.rdbDecimal.Checked = true;
         }
 
+
+        /// <summary>
+        /// Metodo cuando se hace click en el btnOperar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOperar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(this.txtPrimerOperador.Text))
@@ -49,6 +64,11 @@ namespace TP_Integrador_2C
             }
         }
 
+        /// <summary>
+        /// Metodo para limpiar el formulario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             this.txtPrimerOperador.Clear();
@@ -57,6 +77,11 @@ namespace TP_Integrador_2C
             this.cmbOperacion.Text = null;
         }
 
+        /// <summary>
+        /// Metodo para cerrar el formulario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             DialogResult resultado = MessageBox.Show("¿Desea cerrar la calculadora?",
